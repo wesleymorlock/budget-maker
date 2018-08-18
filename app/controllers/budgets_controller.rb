@@ -1,6 +1,7 @@
 class BudgetsController < ApplicationController
+	before_action :load_budget, only: [:show, :edit]
+
 	def show
-		@budget = Budget.find(params[:id])
 	end
 
 	def index
@@ -22,9 +23,19 @@ class BudgetsController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
+	def update
+	end
+
 	private
 
 	def budget_params
     params.require(:budget).permit(:name)
   end
+
+  def load_budget
+  	@budget = Budget.find(params[:id])
+	end
 end
