@@ -1,1 +1,11 @@
-<p>Hey rails!</p>
+<div>
+	<h1>Budget#index</h1>
+
+	<% @budgets.each do |budget| %>
+		<div>
+			<%= link_to budget.name, budget_path(budget) %>
+		</div>
+	<% end %>
+
+	<%= button_to "New", new_budget_path, method: :get %>
+</div>

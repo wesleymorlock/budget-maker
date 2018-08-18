@@ -1,3 +1,9 @@
 <div>
-	<%= @budget.name %>
+	<div class="budget-name">
+		<%= @budget.name %>
+	</div>
+
+	<div>
+		<%= button_to 'Back', budgets_path, method: :get, class: "back-btn" %>
+	</div>
 </div>
