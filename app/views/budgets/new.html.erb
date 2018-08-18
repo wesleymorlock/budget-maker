@@ -1,0 +1,11 @@
+<p>Budgets New Page</p>
+<%= form_with scope: :budget, url: budgets_path, local: true do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.submit "Save" %>
+  </p>
+<% end %>
