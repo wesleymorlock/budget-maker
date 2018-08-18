@@ -8,6 +8,7 @@ class BudgetsController < ApplicationController
 	end
 
 	def new
+		@budget = Budget.new
 	end
 
 	def create
@@ -17,7 +18,7 @@ class BudgetsController < ApplicationController
 		if @budget.save
 			redirect_to @budget
 		else
-			redirect_to budgets_path, notice: "Issue creating budget."
+			render 'new'
 		end
 	end
 
