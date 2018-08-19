@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'app/index'
 
-  resources :budgets
+  resources :budgets do
+	  resources :budget_categories, controller: 'budget_category'
+	end
 
   root 'app#index'
 

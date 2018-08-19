@@ -19,15 +19,13 @@
 	  <% end %>
 
 	  <% if @budget.budget_categories.present? %>
-		  <% @budget.budget_categories.each do |budget_category| %>
-			  <%= fields_for :budget_categories, budget_category do |budget_categories_form| %>
-			  	<ul>
-		  			<li>
-			  			<%= budget_category.name %>: <%= budget_categories_form.text_field :amount %>
-			  		</li>
-		  		</ul>
-		  		<% end %>
-		  <% end %>
+		  <h4>Budget Categories:</h4>
+
+	  	<% @budget.budget_categories.each do |budget_category| %>
+			  <%= form.fields_for :budget_categories, budget_category do |categories_form| %>
+				  <%= budget_category.name %>: <%= categories_form.text_field :amount %><br>
+		    <% end %>
+	    <% end %>
 	  <% end %>
 
 	  <p>

@@ -1,0 +1,19 @@
+<h2>BudgetCategory#new</h2>
+
+
+<%= form_with scope: :budget_category, url: budget_budget_categories_path, local: true do |form| %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </p>
+ 
+  <p>
+    <%= form.submit "Save" %>
+  </p>
+<% end %>

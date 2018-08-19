@@ -13,7 +13,6 @@ class BudgetsController < ApplicationController
 	end
 
 	def create
-		puts params
 		@budget = Budget.new(budget_params)
 
 		if @budget.save
@@ -27,6 +26,8 @@ class BudgetsController < ApplicationController
 	end
 
 	def update
+		@budget.update_budget_categories(params[:budget][:budget_categories_attributes])
+
     if @budget.update(budget_params)
       redirect_to @budget
     else
