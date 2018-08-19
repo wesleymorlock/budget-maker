@@ -1,6 +1,27 @@
 <div>
-	<div class="budget-name">
-		<%= @budget.name %>
+	<span>
+		<h2 class="budget-name">
+			<%= @budget.name %>
+		</h2>
+		<%= button_to 'Edit', edit_budget_path, method: :get, class: "edit-btn" %>
+		<%= button_to 'Back', budgets_path, method: :get, class: "back-btn" %>
+	</span>
+
+	<div class="categories">
+		<h4>Proposed Budget Values:</h4>
+		<ul>
+			<% if @budget.budget_categories.empty? %>
+				<code>You do not have any categories defined.</code>
+			<% else %>
+				<% @budget.budget_categories.each do |budget_category| %>
+					<span>
+						<li>
+							<%= budget_category.name %>: $<%= budget_category.amount || "0.00" %>
+						</li>
+					</span>
+				<% end %>
+			<% end %>
+		</ul
 	</div>
 
 	<div>
@@ -10,9 +31,4 @@
 	<div>
 		<code>Graphs can go here?</code>
 	</div>
-
-	<span>
-		<%= button_to 'Edit', edit_budget_path, method: :get, class: "edit-btn" %>
-		<%= button_to 'Back', budgets_path, method: :get, class: "back-btn" %>
-	</span>
 </div>

@@ -1,5 +1,5 @@
 class BudgetsController < ApplicationController
-	before_action :load_budget, only: [:show, :edit]
+	before_action :load_budget, only: [:show, :edit, :update]
 
 	def show
 	end
@@ -27,12 +27,17 @@ class BudgetsController < ApplicationController
 	end
 
 	def update
+    if @budget.update(budget_params)
+      redirect_to @budget
+    else
+      render 'edit'
+    end
 	end
 
 	private
 
 	def budget_params
-    params.require(:budget).permit(:name)
+    params.require(:budget).permit(:name, :budget_categories)
   end
 
   def load_budget

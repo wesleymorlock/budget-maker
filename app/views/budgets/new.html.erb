@@ -1,4 +1,6 @@
-<p>Budgets New Page</p>
+<h2>Budgets New Page</h2>
+<%= button_to 'Back', budgets_path, method: :get, class: "back-btn" %>
+
 <%= form_with scope: :budget, url: budgets_path, local: true do |form| %>
 	
 	<% if @budget.errors.any? %>
@@ -22,6 +24,5 @@
  
   <p>
     <%= form.submit "Save" %>
-    <%= button_to 'Back', budgets_path, class: "back-btn" %>
   </p>
 <% end %>

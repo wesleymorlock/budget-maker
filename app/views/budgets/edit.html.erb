@@ -1,6 +1,8 @@
-<p>Editing <%= @budget.name %>...</p>
+<h2>Editing <%= @budget.name %>...</h2>
+<%= button_to 'Back', budget_path(@budget), method: :get, class: "back-btn" %>
+
 <div>
-	<%= form_with scope: :budget, url: budgets_path, local: true do |form| %>
+	<%= form_for @budget, url: budget_path, local: true do |form| %>
 		
 		<% if @budget.errors.any? %>
 	    <div id="error_explanation">
@@ -16,6 +18,18 @@
 	    </div>
 	  <% end %>
 
+	  <% if @budget.budget_categories.present? %>
+		  <% @budget.budget_categories.each do |budget_category| %>
+			  <%= fields_for :budget_categories, budget_category do |budget_categories_form| %>
+			  	<ul>
+		  			<li>
+			  			<%= budget_category.name %>: <%= budget_categories_form.text_field :amount %>
+			  		</li>
+		  		</ul>
+		  		<% end %>
+		  <% end %>
+	  <% end %>
+
 	  <p>
 	    <%= form.label :name %><br>
 	    <%= form.text_field :name %>
@@ -23,7 +37,6 @@
 	 
 	  <p>
 	    <%= form.submit "Save" %>
-	    <%= button_to 'Back', budgets_path, class: "back-btn" %>
 	  </p>
 	<% end %>
 </div>
